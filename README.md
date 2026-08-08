@@ -41,11 +41,11 @@ gautham-portfolio/
 
 1. Clone this repository
    ```bash
-   git clone https://github.com/gauthamdhivakar-000/your-repo-name.git
+   git clone https://github.com/gauthamdhivakar-000/gautham-portfolio.git
    ```
 2. Open the project folder
    ```bash
-   cd your-repo-name
+   cd gautham-portfolio
    ```
 3. Open `index.html` directly in your browser — no build step, no dependencies to install.
 
