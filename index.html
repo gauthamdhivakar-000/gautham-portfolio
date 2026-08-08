@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gautham D. — Aspiring AI Engineer</title>
+<meta name="description" content="Portfolio of Gautham D., an Artificial Intelligence &amp; Data Science undergraduate specializing in Machine Learning, Deep Learning and Data Analysis.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:    '#f5f4f1',
+          muted:  '#a7a4a0',
+          bg:     '#0a0a0b',
+          card:   '#141315',
+          line:   '#232225',
+          red:    '#e8321f',
+          red2:   '#ff7a3d',
+          signal: '#33e6c8',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['"Inter"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+
+<!-- AOS scroll animation -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#0a0a0b; }
+  ::selection { background:#e8321f; color:#fff; }
+
+  .scroll-offset { scroll-margin-top: 96px; }
+
+  .grad-text {
+    background: linear-gradient(90deg,#ff5b3a,#e8321f 55%,#ff9a3d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .btn-primary {
+    background: #f5f4f1;
+    color: #0a0a0b;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -8px rgba(232,50,31,.55); }
+
+  .btn-outline {
+    border: 1px solid rgba(245,244,241,.25);
+    color: #f5f4f1;
+    transition: background .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .btn-outline:hover { background: rgba(245,244,241,.08); border-color: rgba(245,244,241,.5); transform: translateY(-2px); }
+
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+    border: 1px solid #232225;
+  }
+  .card:hover { border-color: rgba(232,50,31,.45); }
+
+  .tag {
+    background: rgba(232,50,31,.08);
+    border: 1px solid rgba(232,50,31,.25);
+    color: #f5f4f1;
+  }
+
+  .eyebrow {
+    letter-spacing: .18em;
+  }
+
+  .social-icon {
+    color: rgba(245,244,241,.7);
+    transition: color .2s ease, transform .2s ease;
+  }
+  .social-icon:hover { color: #ff9a3d; transform: translateY(-2px); }
+
+  .mobile-link {
+    color: rgba(245,244,241,.85);
+    font-weight: 500;
+    padding: 4px 0;
+  }
+  .mobile-link:hover { color: #ff9a3d; }
+
+  /* nav underline */
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content:'';
+    position:absolute; left:0; bottom:-6px;
+    width:0; height:1px;
+    background: linear-gradient(90deg,#e8321f,#ff9a3d);
+    transition: width .25s ease;
+  }
+  .nav-link:hover::after { width:100%; }
+
+  /* timeline */
+  .timeline-line {
+    background: linear-gradient(180deg, #e8321f, #232225 85%);
+  }
+  .timeline-dot {
+    box-shadow: 0 0 0 4px #0a0a0b, 0 0 0 5px #e8321f;
+  }
+
+  /* hero canvas */
+  #netCanvas { position:absolute; inset:0; width:100%; height:100%; opacity:.55; }
+
+  /* modal */
+  #certModal { backdrop-filter: blur(6px); }
+  #certModal.hidden { display:none; }
+
+  /* footer big text */
+  .footer-mark {
+    -webkit-text-stroke: 1px rgba(245,244,241,.5);
+    color: transparent;
+  }
+  @media (min-width:768px){
+    .footer-mark { -webkit-text-stroke: 1.5px rgba(245,244,241,.5); }
+  }
+
+  /* mobile menu */
+  #mobileMenu.hidden { display:none; }
+
+  .reduced-motion-safe { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+
+  /* play button pulse */
+  @keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(232,50,31,.55); }
+    100% { box-shadow: 0 0 0 22px rgba(232,50,31,0); }
+  }
+  .pulse { animation: pulseRing 2.2s ease-out infinite; }
+</style>
+</head>
+
+<body class="bg-bg text-ink font-body antialiased">
+
+<!-- ================= NAV ================= -->
+<header id="navHeader" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="#home" class="font-display font-bold text-lg tracking-tight">
+        Gautham<span class="text-red">.</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm text-ink/80 font-medium">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#certificates" class="nav-link">Certificates</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <a href="#contact" class="hidden lg:inline-flex btn-primary rounded-full px-5 py-2.5 text-sm font-semibold">
+        Let's Connect
+      </a>
+
+      <button id="menuBtn" class="lg:hidden text-ink" aria-label="Open menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile menu -->
+  <div id="mobileMenu" class="hidden lg:hidden bg-[#0a0a0b] border-t border-line">
+    <div class="flex flex-col px-6 py-6 gap-5 text-base">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#skills" class="mobile-link">Skills</a>
+      <a href="#education" class="mobile-link">Education</a>
+      <a href="#experience" class="mobile-link">Experience</a>
+      <a href="#certificates" class="mobile-link">Certificates</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="scroll-offset relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#1a0503] via-[#2b0a06] to-[#0a0a0b]">
+  <canvas id="netCanvas"></canvas>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(232,50,31,.35),transparent_45%)]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8 pt-28 pb-16 grid lg:grid-cols-2 gap-14 items-center w-full">
+    <div data-aos="fade-up">
+      <p class="eyebrow font-mono text-xs text-red2 uppercase mb-5">Krishnagiri, Tamil Nadu — India</p>
+      <h1 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-[1.08]">
+        Hi, I'm Gautham D.<br>
+        <span class="grad-text">Aspiring AI Engineer</span>
+      </h1>
+      <p class="mt-6 text-muted text-lg max-w-lg">
+        Turning data into ideas, and ideas into intelligent solutions.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href="#experience" class="btn-primary rounded-full px-7 py-3.5 font-semibold text-sm">View My Work</a>
+        <a href="#contact" class="btn-outline rounded-full px-7 py-3.5 font-semibold text-sm">Contact Me</a>
+      </div>
+
+      <div class="mt-12 flex items-center gap-5">
+        <a href="https://github.com/gauthamdhivakar-000" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.08.78 2.18 0 1.57-.01 2.83-.01 3.22 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/gautham-d-007lanzhan" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/tn_crush_boy" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07-3.2 0-3.58-.01-4.85-.07-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.21 15.58 2.2 15.2 2.2 12c0-3.2.01-3.58.07-4.85.05-1.17.24-1.97.4-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.59 1.8c.46-.16 1.26-.35 2.43-.4C9.29 1.34 9.67 1.33 12 1.33Zm0 1.98c-3.15 0-3.5.01-4.74.07-.96.04-1.48.2-1.82.34-.46.18-.78.39-1.13.73-.34.35-.55.67-.73 1.13-.14.34-.3.86-.34 1.82C3.19 9.3 3.18 9.65 3.18 12s.01 2.7.07 3.94c.04.96.2 1.48.34 1.82.18.46.39.78.73 1.13.35.34.67.55 1.13.73.34.14.86.3 1.82.34 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.96-.04 1.48-.2 1.82-.34.46-.18.78-.39 1.13-.73.34-.35.55-.67.73-1.13.14-.34.3-.86.34-1.82.06-1.24.07-1.59.07-3.94s-.01-2.7-.07-3.94c-.04-.96-.2-1.48-.34-1.82a3 3 0 0 0-.73-1.13 3 3 0 0 0-1.13-.73c-.34-.14-.86-.3-1.82-.34-1.24-.06-1.59-.07-4.74-.07Zm0 3.37a4.45 4.45 0 1 1 0 8.9 4.45 4.45 0 0 1 0-8.9Zm0 1.98a2.47 2.47 0 1 0 0 4.94 2.47 2.47 0 0 0 0-4.94Zm5.66-2.2a1.04 1.04 0 1 1-2.08 0 1.04 1.04 0 0 1 2.08 0Z"/></svg>
+        </a>
+        <a href="mailto:gauthamdhivakar177@gmail.com" class="social-icon" aria-label="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div data-aos="zoom-in" data-aos-delay="150" class="relative mx-auto w-full max-w-md">
+      <div class="relative rounded-3xl overflow-hidden border border-line shadow-2xl aspect-[4/5] bg-card">
+        <img id="heroPoster" src="assets/img/hero.jpg" alt="Gautham D." class="absolute inset-0 w-full h-full object-cover">
+        <video id="heroVideo" src="assets/img/intro-reel.mp4" playsinline class="absolute inset-0 w-full h-full object-cover hidden"></video>
+
+        <button id="playReel" class="pulse absolute bottom-5 right-5 w-16 h-16 rounded-full bg-red/90 flex items-center justify-center text-white shadow-lg hover:bg-red transition">
+          <svg id="playIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="pauseIcon" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        </button>
+        <span class="absolute bottom-8 right-24 text-[11px] font-mono uppercase tracking-widest text-white/80">Play Intro</span>
+      </div>
+      <div class="absolute -z-10 -bottom-6 -left-6 w-40 h-40 rounded-full bg-red/30 blur-3xl"></div>
+      <div class="absolute -z-10 -top-8 -right-6 w-48 h-48 rounded-full bg-red2/20 blur-3xl"></div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 inset-x-0 flex justify-center" data-aos="fade-up" data-aos-delay="400">
+    <a href="#about" class="text-muted text-xs font-mono flex flex-col items-center gap-2 hover:text-ink transition">
+      SCROLL
+      <svg width="14" height="20" viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="12" height="18" rx="6"/><circle cx="7" cy="6" r="1.4" fill="currentColor" stroke="none"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="scroll-offset py-28 bg-bg">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-16 items-center">
+    <div data-aos="fade-right" class="relative mx-auto max-w-sm">
+      <div class="rounded-3xl overflow-hidden border border-line aspect-[4/5]">
+        <img src="assets/img/hero.jpg" alt="Gautham D. portrait" class="w-full h-full object-cover">
+      </div>
+      <div class="absolute -bottom-6 -right-6 card rounded-2xl px-6 py-4 backdrop-blur">
+        <p class="font-display text-2xl font-bold grad-text">AI &amp; DS</p>
+        <p class="text-xs text-muted font-mono mt-1">Undergraduate</p>
+      </div>
+    </div>
+
+    <div data-aos="fade-left">
+      <p class="eyebrow font-mono text-xs text-red2 uppercase mb-4">About Me</p>
+      <h2 class="font-display font-bold text-3xl md:text-4xl leading-tight mb-6">
+        Curious about how machines <span class="grad-text">learn &amp; create.</span>
+      </h2>
+      <p class="text-muted leading-relaxed mb-4">
+        I'm Gautham D, an Artificial Intelligence and Data Science undergraduate with a keen interest in Artificial Intelligence, Machine Learning, Deep Learning, and Data Science. I enjoy exploring how data can be transformed into meaningful insights and how intelligent models can be applied to solve practical problems.
+      </p>
+      <p class="text-muted leading-relaxed mb-4">
+        Through academic projects, hands-on learning, and continuous experimentation, I'm developing my skills in Python, machine learning, data analysis, and AI technologies. I'm curious about how intelligent systems learn, adapt, and create value from data, and I enjoy turning what I learn into practical projects.
+      </p>
+      <p class="text-muted leading-relaxed mb-8">
+        As I continue my journey in AI and Data Science, I aim to strengthen my technical foundation, explore emerging technologies, and build solutions that have real-world relevance.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-red/10 border border-red/30 flex items-center justify-center text-red2 shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span class="text-sm text-ink/90">Krishnagiri, Tamil Nadu, India</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-red/10 border border-red/30 flex items-center justify-center text-red2 shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </span>
+          <a href="mailto:gauthamdhivakar177@gmail.com" class="text-sm text-ink/90 hover:text-red2 transition break-all">gauthamdhivakar177@gmail.com</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-red/10 border border-red/30 flex items-center justify-center text-red2 shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg>
+          </span>
+          <a href="tel:+918012475353" class="text-sm text-ink/90 hover:text-red2 transition">+91 80124 75353</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-red/10 border border-red/30 flex items-center justify-center text-red2 shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+          </span>
+          <span class="text-sm text-ink/90">B.Tech, AI &amp; Data Science</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="scroll-offset py-28 bg-[#0d0d0e] border-y border-line">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+      <p class="eyebrow font-mono text-xs text-red2 uppercase mb-4">What I Work With</p>
+      <h2 class="font-display font-bold text-3xl md:text-4xl">Skills &amp; Tools</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card rounded-2xl p-7" data-aos="fade-up" data-aos-delay="0">
+        <div class="w-11 h-11 rounded-xl bg-red/10 border border-red/30 flex items-center justify-center text-red2 mb-5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-4">AI &amp; Machine Learning</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Artificial Intelligence</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Machine Learning</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Deep Learning</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Generative AI</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Prompt Engineering</span>
+        </div>
+      </div>
+
+      <div class="card rounded-2xl p-7" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-11 h-11 rounded-xl bg-red/10 border border-red/30 flex items-center justify-center text-red2 mb-5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-4">Data Science</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Data Analysis</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Data Visualization</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Data Preprocessing</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">EDA</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Statistical Analysis</span>
+        </div>
+      </div>
+
+      <div class="card rounded-2xl p-7" data-aos="fade-up" data-aos-delay="200">
+        <div class="w-11 h-11 rounded-xl bg-red/10 border border-red/30 flex items-center justify-center text-red2 mb-5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 4-6 8 6 8M16 4l6 8-6 8"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-4">Programming</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Python</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">SQL</span>
+        </div>
+      </div>
+
+      <div class="card rounded-2xl p-7" data-aos="fade-up" data-aos-delay="300">
+        <div class="w-11 h-11 rounded-xl bg-red/10 border border-red/30 flex items-center justify-center text-red2 mb-5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-4">Tools &amp; Platforms</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Jupyter Notebook</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Google Colab</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Streamlit</span>
+          <span class="tag text-xs font-mono px-3 py-1.5 rounded-full">Git &amp; GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education" class="scroll-offset py-28 bg-bg">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+      <p class="eyebrow font-mono text-xs text-red2 uppercase mb-4">Academic Background</p>
+      <h2 class="font-display font-bold text-3xl md:text-4xl">Education</h2>
+    </div>
+
+    <div class="relative max-w-3xl mx-auto pl-10">
+      <div class="timeline-line absolute left-[7px] top-2 bottom-2 w-[2px]"></div>
+
+      <div class="relative mb-14" data-aos="fade-up">
+        <span class="timeline-dot absolute -left-10 top-1.5 w-3.5 h-3.5 rounded-full bg-red"></span>
+        <p class="font-mono text-xs text-red2 mb-2">2024 — 2028 (EXPECTED)</p>
+        <h3 class="font-display font-semibold text-xl mb-1">B.Tech, Artificial Intelligence &amp; Data Science</h3>
+        <p class="text-muted text-sm mb-2">Er. Perumal Manimegalai College of Engineering</p>
+        <span class="tag text-xs font-mono px-3 py-1 rounded-full inline-block">CGPA: 7.66%</span>
+      </div>
+
+      <div class="relative mb-14" data-aos="fade-up">
+        <span class="timeline-dot absolute -left-10 top-1.5 w-3.5 h-3.5 rounded-full bg-red"></span>
+        <p class="font-mono text-xs text-red2 mb-2">CLASS OF 2024</p>
+        <h3 class="font-display font-semibold text-xl mb-1">Higher Secondary (12th Grade), CBSE</h3>
+        <p class="text-muted text-sm">The Vijay Millennium Senior Secondary School</p>
+      </div>
+
+      <div class="relative" data-aos="fade-up">
+        <span class="timeline-dot absolute -left-10 top-1.5 w-3.5 h-3.5 rounded-full bg-red"></span>
+        <p class="font-mono text-xs text-red2 mb-2">CLASS OF 2022</p>
+        <h3 class="font-display font-semibold text-xl mb-1">Secondary School (10th Grade), CBSE</h3>
+        <p class="text-muted text-sm">Eden Garden English School</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE (Internships + Project) ================= -->
+<section id="experience" class="scroll-offset py-28 bg-[#0d0d0e] border-y border-line">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+      <p class="eyebrow font-mono text-xs text-red2 uppercase mb-4">Experience</p>
+      <h2 class="font-display font-bold text-3xl md:text-4xl">Internships</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-20">
+      <!-- Zidio -->
+      <div class="card rounded-2xl p-8" data-aos="fade-up">
+        <div class="flex items-center justify-between mb-6">
+          <img src="assets/img/zidio_logo.png" alt="Zidio Development logo" class="h-7 w-auto object-contain">
+          <span class="font-mono text-xs text-muted">1 Month</span>
+        </div>
+        <h3 class="font-display font-semibold text-xl mb-1">Data Science &amp; Analytics Intern</h3>
+        <p class="text-sm text-red2 font-medium mb-4">Zidio Development</p>
+        <p class="text-muted text-sm leading-relaxed mb-6">
+          Worked on data science and analytics tasks during a one-month internship, applying data analysis
+          and Python skills to real project work — including a retail data analysis dashboard.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://retail-analysis-projectgit-udoctr34pjahk65nrw8nlo.streamlit.app" target="_blank" rel="noopener"
+             class="btn-outline rounded-full px-5 py-2.5 text-xs font-semibold font-mono inline-flex items-center gap-2">
+            View Project
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <button onclick="openCert('assets/internships/intern-1.jpg','Zidio Development — Certificate of Internship')"
+             class="btn-primary rounded-full px-5 py-2.5 text-xs font-semibold font-mono">
+            View Certificate
+          </button>
+        </div>
+      </div>
+
+      <!-- Make Clouds -->
+      <div class="card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="150">
+        <div class="flex items-center justify-between mb-6">
+          <img src="assets/img/makeclouds_logo.png" alt="Make Clouds Digital Transformations logo" class="h-7 w-auto object-contain">
+          <span class="font-mono text-xs text-muted">1 Month</span>
+        </div>
+        <h3 class="font-display font-semibold text-xl mb-1">Data Science Intern</h3>
+        <p class="text-sm text-red2 font-medium mb-4">Make Clouds Digital Transformations</p>
+        <p class="text-muted text-sm leading-relaxed mb-6">
+          Completed a one-month Data Science internship, gaining hands-on experience in data analysis
+          workflows and applied machine learning concepts.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <button onclick="openCert('assets/internships/intern-2.jpg','Make Clouds Digital Transformations — Internship Certificate')"
+             class="btn-primary rounded-full px-5 py-2.5 text-xs font-semibold font-mono">
+            View Certificate
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Project -->
+    <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+      <p class="eyebrow font-mono text-xs text-red2 uppercase mb-4">Featured Project</p>
+      <h2 class="font-display font-bold text-3xl md:text-4xl">Built &amp; Deployed</h2>
+    </div>
+
+    <div class="card rounded-3xl overflow-hidden grid md:grid-cols-5 max-w-4xl mx-auto" data-aos="zoom-in">
+      <div class="md:col-span-2 bg-gradient-to-br from-red/25 via-[#1a0503] to-[#0d0d0e] flex items-center justify-center p-10">
+        <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" class="text-red2">
+          <path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/>
+        </svg>
+      </div>
+      <div class="md:col-span-3 p-8">
+        <h3 class="font-display font-semibold text-xl mb-2">Retail Analysis Dashboard</h3>
+        <p class="text-muted text-sm leading-relaxed mb-5">
+          An interactive data analysis project exploring retail data, built during the Zidio Development internship
+          and deployed as a live Streamlit web app.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag text-xs font-mono px-3 py-1 rounded-full">Python</span>
+          <span class="tag text-xs font-mono px-3 py-1 rounded-full">Data Analysis</span>
+          <span class="tag text-xs font-mono px-3 py-1 rounded-full">Streamlit</span>
+        </div>
+        <a href="https://retail-analysis-projectgit-udoctr34pjahk65nrw8nlo.streamlit.app" target="_blank" rel="noopener"
+           class="btn-outline rounded-full px-5 py-2.5 text-xs font-semibold font-mono inline-flex items-center gap-2">
+          Open Live App
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATES ================= -->
+<section id="certificates" class="scroll-offset py-28 bg-bg">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+      <p class="eyebrow font-mono text-xs text-red2 uppercase mb-4">Certifications</p>
+      <h2 class="font-display font-bold text-3xl md:text-4xl">Courses &amp; Certificates</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- 1 -->
+      <div class="card rounded-2xl p-7 flex flex-col" data-aos="fade-up" data-aos-delay="0">
+        <h3 class="font-display font-semibold text-lg mb-2 leading-snug">Mastering Data Preparation &amp; Analysis</h3>
+        <p class="text-sm text-red2 font-medium mb-1">GUVI (HCL)</p>
+        <p class="text-xs font-mono text-muted mb-6">Issued Nov 4, 2025</p>
+        <button onclick="openCert('assets/certificates/cert-1.jpg','Mastering Data Preparation &amp; Analysis — GUVI')"
+          class="mt-auto btn-outline rounded-full px-5 py-2.5 text-xs font-semibold font-mono self-start">View Certificate</button>
+      </div>
+      <!-- 2 -->
+      <div class="card rounded-2xl p-7 flex flex-col" data-aos="fade-up" data-aos-delay="80">
+        <h3 class="font-display font-semibold text-lg mb-2 leading-snug">AI Fundamentals: Foundations for Understanding AI</h3>
+        <p class="text-sm text-red2 font-medium mb-1">IBM SkillsBuild</p>
+        <p class="text-xs font-mono text-muted mb-6">Issued Jan 7, 2026</p>
+        <button onclick="openCert('assets/certificates/cert-2.jpg','AI Fundamentals — IBM SkillsBuild')"
+          class="mt-auto btn-outline rounded-full px-5 py-2.5 text-xs font-semibold font-mono self-start">View Certificate</button>
+      </div>
+      <!-- 3 -->
+      <div class="card rounded-2xl p-7 flex flex-col" data-aos="fade-up" data-aos-delay="160">
+        <h3 class="font-display font-semibold text-lg mb-2 leading-snug">Basics of Data Structures &amp; Algorithms</h3>
+        <p class="text-sm text-red2 font-medium mb-1">Simplilearn SkillUp</p>
+        <p class="text-xs font-mono text-muted mb-6">Issued Dec 25, 2025</p>
+        <button onclick="openCert('assets/certificates/cert-3.jpg','Basics of DSA — Simplilearn SkillUp')"
+          class="mt-auto btn-outline rounded-full px-5 py-2.5 text-xs font-semibold font-mono self-start">View Certificate</button>
+      </div>
+      <!-- 4 -->
+      <div class="card rounded-2xl p-7 flex flex-col" data-aos="fade-up" data-aos-delay="0">
+        <h3 class="font-display font-semibold text-lg mb-2 leading-snug">Data Science Foundation</h3>
+        <p class="text-sm text-red2 font-medium mb-1">GUVI (HCL)</p>
+        <p class="text-xs font-mono text-muted mb-6">Issued Nov 4, 2025</p>
+        <button onclick="openCert('assets/certificates/cert-4.jpg','Data Science Foundation — GUVI')"
+          class="mt-auto btn-outline rounded-full px-5 py-2.5 text-xs font-semibold font-mono self-start">View Certificate</button>
+      </div>
+      <!-- 5 -->
+      <div class="card rounded-2xl p-7 flex flex-col" data-aos="fade-up" data-aos-delay="80">
+        <h3 class="font-display font-semibold text-lg mb-2 leading-snug">Prompt Engineering for Everyone</h3>
+        <p class="text-sm text-red2 font-medium mb-1">Cognitive Class (IBM Skills Network)</p>
+        <p class="text-xs font-mono text-muted mb-6">Issued Nov 24, 2024</p>
+        <button onclick="openCert('assets/certificates/cert-5.jpg','Prompt Engineering for Everyone — Cognitive Class')"
+          class="mt-auto btn-outline rounded-full px-5 py-2.5 text-xs font-semibold font-mono self-start">View Certificate</button>
+      </div>
+      <!-- 6 -->
+      <div class="card rounded-2xl p-7 flex flex-col" data-aos="fade-up" data-aos-delay="160">
+        <h3 class="font-display font-semibold text-lg mb-2 leading-snug">Introduction to HTML</h3>
+        <p class="text-sm text-red2 font-medium mb-1">Simplilearn SkillUp</p>
+        <p class="text-xs font-mono text-muted mb-6">Issued Jun 30, 2026</p>
+        <button onclick="openCert('assets/certificates/cert-6.jpg','Introduction to HTML — Simplilearn SkillUp')"
+          class="mt-auto btn-outline rounded-full px-5 py-2.5 text-xs font-semibold font-mono self-start">View Certificate</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT / FOOTER ================= -->
+<section id="contact" class="scroll-offset relative pt-28 pb-14 bg-[#0d0d0e] border-t border-line overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(232,50,31,.18),transparent_45%)]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid lg:grid-cols-2 gap-14 items-center mb-24">
+      <div data-aos="fade-right">
+        <p class="eyebrow font-mono text-xs text-red2 uppercase mb-4">Get In Touch</p>
+        <h2 class="font-display font-bold text-3xl md:text-5xl leading-tight mb-6">
+          Let's build something <span class="grad-text">intelligent.</span>
+        </h2>
+        <p class="text-muted max-w-md leading-relaxed">
+          Open to internships, collaborations, and opportunities in AI &amp; Data Science.
+          Feel free to reach out — I'd love to hear from you.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-5" data-aos="fade-left">
+        <a href="mailto:gauthamdhivakar177@gmail.com" class="card rounded-2xl p-6 hover:border-red/60 transition block">
+          <span class="w-10 h-10 rounded-full bg-red/10 border border-red/30 flex items-center justify-center text-red2 mb-4">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </span>
+          <p class="text-xs font-mono text-muted mb-1">Email</p>
+          <p class="text-sm font-medium break-all">gauthamdhivakar177@gmail.com</p>
+        </a>
+        <a href="tel:+918012475353" class="card rounded-2xl p-6 hover:border-red/60 transition block">
+          <span class="w-10 h-10 rounded-full bg-red/10 border border-red/30 flex items-center justify-center text-red2 mb-4">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg>
+          </span>
+          <p class="text-xs font-mono text-muted mb-1">Phone</p>
+          <p class="text-sm font-medium">+91 80124 75353</p>
+        </a>
+        <a href="https://github.com/gauthamdhivakar-000" target="_blank" rel="noopener" class="card rounded-2xl p-6 hover:border-red/60 transition block">
+          <span class="w-10 h-10 rounded-full bg-red/10 border border-red/30 flex items-center justify-center text-red2 mb-4">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.08.78 2.18 0 1.57-.01 2.83-.01 3.22 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5Z"/></svg>
+          </span>
+          <p class="text-xs font-mono text-muted mb-1">GitHub</p>
+          <p class="text-sm font-medium">gauthamdhivakar-000</p>
+        </a>
+        <a href="https://www.linkedin.com/in/gautham-d-007lanzhan" target="_blank" rel="noopener" class="card rounded-2xl p-6 hover:border-red/60 transition block">
+          <span class="w-10 h-10 rounded-full bg-red/10 border border-red/30 flex items-center justify-center text-red2 mb-4">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+          </span>
+          <p class="text-xs font-mono text-muted mb-1">LinkedIn</p>
+          <p class="text-sm font-medium">gautham-d-007lanzhan</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="text-center mb-10 select-none" data-aos="fade-up">
+      <h3 class="footer-mark font-display font-bold text-[15vw] sm:text-8xl md:text-9xl leading-none tracking-tight">
+        GAUTHAM D.
+      </h3>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-line text-xs text-muted font-mono">
+      <p>&copy; <span id="year"></span> Gautham D. All rights reserved.</p>
+      <div class="flex items-center gap-5">
+        <a href="https://github.com/gauthamdhivakar-000" target="_blank" rel="noopener" class="hover:text-ink transition">GitHub</a>
+        <a href="https://www.linkedin.com/in/gautham-d-007lanzhan" target="_blank" rel="noopener" class="hover:text-ink transition">LinkedIn</a>
+        <a href="https://www.instagram.com/tn_crush_boy" target="_blank" rel="noopener" class="hover:text-ink transition">Instagram</a>
+      </div>
+      <p>Designed &amp; built by Gautham D.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATE MODAL ================= -->
+<div id="certModal" class="hidden fixed inset-0 z-[100] items-center justify-center p-4 sm:p-8 bg-black/80">
+  <div class="relative max-w-3xl w-full">
+    <button onclick="closeCert()" aria-label="Close" class="absolute -top-12 right-0 sm:top-0 sm:-right-12 text-white/80 hover:text-white">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="bg-card border border-line rounded-2xl overflow-hidden">
+      <img id="modalImg" src="" alt="Certificate" class="w-full max-h-[75vh] object-contain bg-white">
+      <p id="modalTitle" class="text-sm font-medium px-6 py-4 border-t border-line text-ink/90"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  AOS.init({
+    duration: 700,
+    once: true,
+    disable: reduceMotion,
+  });
+
+  /* ---- Mobile menu ---- */
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  document.querySelectorAll('.mobile-link').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  });
+
+  /* ---- Nav background on scroll ---- */
+  const navHeader = document.getElementById('navHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navHeader.classList.add('bg-bg/90', 'backdrop-blur', 'border-b', 'border-line');
+    } else {
+      navHeader.classList.remove('bg-bg/90', 'backdrop-blur', 'border-b', 'border-line');
+    }
+  });
+
+  /* ---- Hero play/pause reel ---- */
+  const heroVideo = document.getElementById('heroVideo');
+  const heroPoster = document.getElementById('heroPoster');
+  const playReel = document.getElementById('playReel');
+  const playIcon = document.getElementById('playIcon');
+  const pauseIcon = document.getElementById('pauseIcon');
+  let reelPlaying = false;
+
+  playReel.addEventListener('click', () => {
+    if (!reelPlaying) {
+      heroPoster.classList.add('hidden');
+      heroVideo.classList.remove('hidden');
+      heroVideo.currentTime = 0;
+      heroVideo.play();
+      playIcon.classList.add('hidden');
+      pauseIcon.classList.remove('hidden');
+      playReel.classList.remove('pulse');
+      reelPlaying = true;
+    } else {
+      heroVideo.pause();
+      playIcon.classList.remove('hidden');
+      pauseIcon.classList.add('hidden');
+      reelPlaying = false;
+    }
+  });
+  heroVideo.addEventListener('ended', () => {
+    heroVideo.classList.add('hidden');
+    heroPoster.classList.remove('hidden');
+    playIcon.classList.remove('hidden');
+    pauseIcon.classList.add('hidden');
+    playReel.classList.add('pulse');
+    reelPlaying = false;
+  });
+
+  /* ---- Certificate modal ---- */
+  const certModal = document.getElementById('certModal');
+  const modalImg = document.getElementById('modalImg');
+  const modalTitle = document.getElementById('modalTitle');
+
+  function openCert(src, title) {
+    modalImg.src = src;
+    modalTitle.innerHTML = title;
+    certModal.classList.remove('hidden');
+    certModal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCert() {
+    certModal.classList.add('hidden');
+    certModal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  certModal.addEventListener('click', (e) => { if (e.target === certModal) closeCert(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCert(); });
+
+  /* ---- Neural network particle background (hero) ---- */
+  (function () {
+    const canvas = document.getElementById('netCanvas');
+    const ctx = canvas.getContext('2d');
+    const heroSection = document.getElementById('home');
+    let nodes = [];
+    let w, h;
+
+    function resize() {
+      w = canvas.width = heroSection.offsetWidth;
+      h = canvas.height = heroSection.offsetHeight;
+      const count = Math.max(28, Math.min(70, Math.floor((w * h) / 22000)));
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+      }));
+    }
+
+    function step() {
+      ctx.clearRect(0, 0, w, h);
+      for (const n of nodes) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i], b = nodes[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 140) {
+            ctx.strokeStyle = `rgba(232,50,31,${0.16 * (1 - dist / 140)})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+      for (const n of nodes) {
+        ctx.fillStyle = 'rgba(255,154,61,0.65)';
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      if (!reduceMotion) requestAnimationFrame(step);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    step();
+  })();
+</script>
+</body>
+</html>
