@@ -2,7 +2,7 @@
 
 Personal developer portfolio for **Gautham D.**, an Artificial Intelligence & Data Science undergraduate, showcasing my education, skills, internships, and certifications.
 
-🔗 **Live Site:** [https://gautham-portfolio-lanzhan.netlify.app/](#) <!-- replace with your Netlify/GitHub Pages link -->
+🔗 **Live Site:** [https://gautham-portfolio-lanzhan.netlify.app](#) <!-- replace with your Netlify/GitHub Pages link -->
 
 ## 📌 About
 
